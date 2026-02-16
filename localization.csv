@@ -1,0 +1,150 @@
+Key_ID,AR_Text,EN_Text
+ui_game_title,Sip & Seek: Nomad Cafe,Sip & Seek: Nomad Cafe
+ui_play,العب,Play
+ui_settings,الإعدادات,Settings
+ui_shop,المتجر,Shop
+ui_passport,جواز السفر,Passport
+ui_album,الألبوم,Album
+ui_achievements,الإنجازات,Achievements
+ui_daily,التحديات اليومية,Daily Challenges
+ui_next,التالي,Next
+ui_skip,تخطي,Skip
+ui_retry,إعادة,Retry
+ui_buy,اشتري,Buy
+ui_close,إغلاق,Close
+ui_confirm,تأكيد,Confirm
+ui_cancel,إلغاء,Cancel
+ui_back,رجوع,Back
+ui_share,مشاركة,Share
+ui_save,حفظ,Save
+ui_continue,متابعة,Continue
+ui_later,لاحقاً,Later
+ui_coins,عملات ذهبية,Gold Coins
+ui_gems,جواهر,Gems
+ui_stars,نجوم,Stars
+ui_level,المستوى,Level
+ui_level_complete,مرحلة مكتملة!,Level Complete!
+ui_congrats,مبروك!,Congratulations!
+ui_revealed,مكشوف,Revealed
+ui_locked,مقفل,Locked
+ui_frozen,مجمد,Frozen
+ui_progress,التقدم,Progress
+ui_reward,المكافأة,Reward
+ui_powerups,الأدوات المساعدة,Power-ups
+ui_fog_clearer,كاشف الضباب,Fog Clearer
+ui_golden_hammer,المطرقة الذهبية,Golden Hammer
+ui_bomb,القنبلة,Bomb
+ui_hint,تلميح,Hint
+ui_time_extender,وقت إضافي,Time Extender
+ui_vision,الرؤية,Vision
+ui_premium_pass,جواز المسافر المميز,Premium Traveler's Pass
+ui_free_pass,المسار المجاني,Free Pass
+ui_welcome_bundle,حزمة الترحيب,Welcome Bundle
+ui_weekend_bundle,حزمة نهاية الأسبوع,Weekend Bundle
+ui_starter_pack,حزمة البداية,Starter Pack
+ui_best_value,الأفضل قيمة!,Best Value!
+ui_watch_ad,شاهد إعلاناً,Watch Ad
+ui_ad_reward,شاهد إعلاناً للحصول على مكافأة,Watch an ad to earn a reward
+ui_no_thanks,لا شكراً,No Thanks
+ui_are_you_sure,هل أنت متأكد؟,Are you sure?
+ui_skip_level_warn,هل أنت متأكد؟ هذه المرحلة ممتعة! 😊,Are you sure? This level is fun! 😊
+ui_star_1,⭐ أكملت المرحلة,⭐ Level Complete
+ui_star_2,⭐⭐ أداء ممتاز!,⭐⭐ Excellent!
+ui_star_3,⭐⭐⭐ مثالي!,⭐⭐⭐ Perfect!
+ui_master_explorer,المستكشف الأعظم,Master Explorer
+ui_strategist,الاستراتيجي,Strategist
+ui_total_merges,إجمالي الدمجات,Total Merges
+ui_tiles_revealed,بلاطات مكشوفة,Tiles Revealed
+ui_moves_left,حركات متبقية,Moves Left
+lv1_name,ركن الجدة,Grandma's Corner
+lv2_name,الرف القديم,The Old Shelf
+lv3_name,نافذة الشارع,Street Window
+item_coffee_bean,حبة بن,Coffee Bean
+item_bean_pile,كومة حبوب,Bean Pile
+item_ground_coffee,بن مطحون,Ground Coffee
+item_coffee_cup,فنجان قهوة,Coffee Cup
+item_coffee_pot,دلّة قهوة,Coffee Pot
+item_tea_leaf,ورقة شاي,Tea Leaf
+item_tea_bundle,حزمة شاي,Tea Bundle
+item_tea_bag,كيس شاي,Tea Bag
+item_tea_glass,كأس شاي,Tea Glass
+item_tea_set,طقم شاي,Tea Set
+item_torn_paper,ورقة ممزقة,Torn Paper
+item_paper_scraps,قصاصات ورق,Paper Scraps
+item_old_letter,رسالة قديمة,Old Letter
+item_envelope_bundle,حزمة رسائل,Envelope Bundle
+item_treasure_map,خريطة كنز,Treasure Map
+item_explorers_journal,دفتر المستكشف,Explorer's Journal
+item_fabric_scrap,قطعة قماش,Fabric Scrap
+item_rope,حبل,Rope
+item_magnifying_glass,عدسة مكبرة,Magnifying Glass
+item_excavation_brush,فرشاة حفريات,Excavation Brush
+item_chisel,أزميل,Chisel
+item_explorers_bag,حقيبة مستكشف,Explorer's Bag
+obs_locked,صندوق مقفل,Locked Tile
+obs_frozen,جليد,Frozen Tile
+obs_keylock,قفل مفتاح,Key Lock Tile
+obs_dark,مربع مظلم,Dark Tile
+obs_golden,مربع ذهبي,Golden Tile
+ach_begin,البداية,The Beginning
+ach_saver,المقتصد,The Saver
+ach_merge10,سيد الدمج,Merge Master
+ach_reveal,الكاشف,The Revealer
+ach_speed,العداء السريع,Speed Runner
+ach_perfect,المثالي,Perfectionist
+ach_collector,الجامع,Collector
+ach_explorer,المستكشف الأعظم,Master Explorer
+daily_merge,"ادمج {target} عنصر","Merge {target} items"
+daily_level,"أكمل {target} مستويات","Complete {target} levels"
+daily_stars,"اجمع {target} نجوم","Earn {target} stars"
+daily_reveal,"اكشف {target} بلاطة","Reveal {target} tiles"
+daily_chain,"اصنع عنصر مستوى {target}","Create a Level {target} item"
+daily_perfect,"احصل على 3 نجوم في {target} مستوى","Get 3 stars on {target} level(s)"
+daily_nohelp,أكمل مستوى بدون مساعدات,Complete a level without powerups
+dlg_lv1_pre_1,"جدة، ليش كل مرة بتقعدي هون بالزاوية هاي؟","Grandma, why do you always sit here in this corner?"
+dlg_lv1_pre_2,"تعال يا حبيبي، اقعد جنبي... خليني أوريك.","Come sit with me, dear... let me show you."
+dlg_lv1_post_1,"شفت؟ هاد الإبريق... أهداني ياه جدك يوم خطبتنا.","See? This teapot... your grandfather gave it to me on our engagement day."
+dlg_lv1_post_2,"ما كنت بعرف! شو هالقصة الحلوة!","I didn't know! What a lovely story!"
+dlg_lv1_post_3,"في كتير قصص يا ولدي... بس لازم تكشف الباقي.","There are many stories, my dear... but you must uncover the rest."
+dlg_lv2_pre_1,"هاد الرف... مغطى غبار من زمان!","This shelf... it's been covered in dust for ages!"
+dlg_lv2_pre_2,"أي والله، ما فتحته من سنين... خايفة ألاقي ذكريات صعبة.","Indeed, I haven't opened it in years... I'm afraid of finding difficult memories."
+dlg_lv2_post_1,"جدة! صور قديمة... ورسايل! من هون؟","Grandma! Old photos... and letters! Where are they from?"
+dlg_lv2_post_2,"هدول... رسائل من مصر، لما كنت صغيرة.","These are... letters from Egypt, from when I was young."
+dlg_lv2_post_3,"مصر؟! ما قلتيلي إنك سافرتي!","Egypt?! You never told me you traveled!"
+dlg_lv2_post_4,"في كتير ما قلتلك يا ليث... تعال شوف النافذة هديك.","There's a lot I haven't told you, Laith... come look at that window."
+dlg_lv3_pre_1,"النافذة هاي... بتطل على الشارع القديم، صح؟","This window... it overlooks the old street, right?"
+dlg_lv3_pre_2,"أي، كنت أقعد هون وأتفرج على الناس... وأحلم.","Yes, I used to sit here watching the people... and dreaming."
+dlg_lv3_post_1,"خريطة؟! هاي خريطة... لكل أنحاء العالم!","A map?! This is a map... of the whole world!"
+dlg_lv3_post_2,"كنت أحلم أسافر لكل مكان عليها، يا ولدي.","I used to dream of traveling everywhere on it, my dear."
+dlg_lv3_post_3,"وسافرتي فعلاً؟","And did you actually travel?"
+dlg_lv3_post_4,"أكتر مما تتخيل... بس هاد سر المراحل الجاية.","More than you can imagine... but that's the secret of the coming levels."
+nar_lv1_before,"مرحباً، أنا ليث. هذا مقهى جدتي القديم... لقد أهملته لسنوات. أريد إعادته لجماله القديم. لنبدأ من هذا الركن...","Hello, I'm Laith. This is my grandma's old café... neglected for years. I want to restore its old beauty. Let's start with this corner..."
+nar_lv1_after,"آه... هذا الركن. كانت جدتي تجلس هنا كل صباح. أستطيع تقريباً أن أشم رائحة الشاي... هناك المزيد من الذكريات لاستكشافها...","Ah... this corner. Grandma used to sit here every morning. I can almost smell the tea... There are more memories to explore..."
+nar_lv2_before,"ما هذا؟ رف قديم مغطى بالغبار... أتساءل ما الكنوز التي تختبئ هنا. لننظف هذا المكان!","What's this? An old shelf covered in dust... I wonder what treasures are hidden here. Let's clean this place up!"
+nar_lv2_after,"ياه! صور قديمة... ورسائل! يبدو أن لجدتي قصة لم أعرفها من قبل... يجب أن أتعمق أكثر.","Wow! Old photos... and letters! It seems Grandma had a story I never knew... I need to dig deeper."
+nar_lv3_before,"النافذة... كانت تطل على الشارع الرئيسي. أتذكر حين كنت صغيراً أجلس هنا أشاهد الناس... ما الأسرار التي تحملها؟","The window... it overlooked the main street. I remember as a child sitting here watching people... What secrets does it hold?"
+nar_lv3_after,"خريطة قديمة! كانت جدتي مسافرة؟! هذا يفتح أبواب كثيرة... المغامرة الحقيقية تبدأ الآن! 🗺️","An old map! Grandma was a traveler?! This opens so many doors... The real adventure begins now! 🗺️"
+msg_lv1_complete,"🎉 مبروك! حصلت على 100 عملة ذهبية! 💡 يمكنك استخدام العملات لشراء أدوات مساعدة في المراحل القادمة.","🎉 Congratulations! You earned 100 Gold Coins! 💡 You can use coins to buy helpful tools in upcoming levels."
+msg_lv2_complete,"🎊 ممتاز! حصلت على 150 عملة و 7 جواهر! 🛒 الآن يمكنك زيارة المتجر وشراء أدوات مساعدة!","🎊 Excellent! You earned 150 Coins and 7 Gems! 🛒 Now you can visit the Shop and buy helpful tools!"
+msg_lv3_complete,"🏆 رائع! لقد أكملت 3 مراحل! 📖 الآن يمكنك جمع الصور في جواز السفر!","🏆 Amazing! You completed 3 levels! 📖 Now you can collect images in your Passport!"
+msg_shop_intro,"هذه الأداة تساعدك في المراحل الصعبة! جربها!","This tool helps you in difficult levels! Try it!"
+msg_locked_tile,"هذا المربع مقفل! 🔒","This tile is locked! 🔒"
+msg_unlock_success,"أحسنت! دمجة قوية تفتح الأقفال! 💪","Great job! A powerful merge opens locks! 💪"
+msg_frozen_tile,"هذا المربع متجمد! ❄️ يحتاج دمجتين لإذابته!","This tile is frozen! ❄️ It needs two merges to thaw!"
+msg_ice_melting,"دمجة واحدة... الجليد يذوب...","One merge... the ice is melting..."
+msg_ice_done,"دمجة أخرى... مكشوف! 🎉","Another merge... revealed! 🎉"
+msg_keylock_tile,"مربع خاص! لا يُفتح بالدمج العادي 🔑","Special tile! Regular merges won't work 🔑"
+msg_keylock_done,"رائع! الآن يمكنك فتح أي مربع خاص! 🌟","Awesome! Now you can open any special tile! 🌟"
+msg_almost_there,"💎 أنت قريب جداً!","💎 You're almost there!"
+msg_special_offer,"🎁 عرض خاص لك!","🎁 Special offer for you!"
+msg_ad_offer_tile,"شاهد إعلاناً لكشف بلاطة واحدة","Watch an ad to reveal one tile"
+msg_ad_offer_start,"شاهد إعلاناً لبداية قوية","Watch an ad for a strong start"
+msg_ad_offer_retry,"شاهد إعلاناً للمحاولة مرة أخرى","Watch an ad to try again"
+msg_ad_offer_coins,"شاهد إعلاناً للحصول على عملات","Watch an ad to earn coins"
+msg_ad_daily_chest,"شاهد إعلاناً لفتح صندوق يومي","Watch an ad to open the daily chest"
+msg_premium_promo,"رائع! تقدمت بسرعة! 🎉 هل تريد التقدم أسرع؟ احصل على Premium Pass!","Amazing! You're progressing fast! 🎉 Want to go faster? Get the Premium Pass!"
+msg_difficulty_help,"هذه المرحلة صعبة! 💪 هل تريد مساعدة؟","This level is tough! 💪 Need some help?"
+msg_share_text,"لقد اكتشفت {place} في Sip & Seek: Nomad Cafe! 🎮","I discovered {place} in Sip & Seek: Nomad Cafe! 🎮"
+msg_info_card_title,🎉 مبروك! لقد اكتشفت:,🎉 Congratulations! You discovered:
+msg_did_you_know,📖 هل تعلم؟,📖 Did You Know?
+msg_next_adventure,المغامرة القادمة:,Next Adventure:
