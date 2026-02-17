@@ -51,4 +51,36 @@ namespace SipAndSeek
         Dark,
         Golden
     }
+
+    public enum GameState
+    {
+        MainMenu,
+        Loading,
+        Playing,
+        Paused,
+        LevelComplete,
+        LevelFailed,
+        Dialogue
+    }
+
+    public enum MergeDirection
+    {
+        None,
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
+    public enum TileState
+    {
+        Empty,
+        Occupied,
+        Revealed,
+        Locked,
+        Frozen,
+        KeyLocked,
+        Dark,
+        Golden
+    }
 }
