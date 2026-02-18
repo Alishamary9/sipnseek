@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Collections.Generic;
+using SipAndSeek;
 using SipAndSeek.Data;
 
 namespace SipAndSeek.Editor

@@ -1,4 +1,5 @@
 using UnityEngine;
+using SipAndSeek;
 
 namespace SipAndSeek.Data
 {

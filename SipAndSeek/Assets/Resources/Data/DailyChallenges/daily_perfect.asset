@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983a5bd119553704bbef8c20da302db7, type: 3}
+  m_Name: daily_perfect
+  m_EditorClassIdentifier: Assembly-CSharp::SipAndSeek.Data.DailyChallengeData
+  challengeId: daily_perfect
+  type: 5
+  descriptionEN: Get 3 stars on {target} level(s)
+  descriptionAR: "\u0627\u062D\u0635\u0644 \u0639\u0644\u0649 3 \u0646\u062C\u0648\u0645
+    \u0641\u064A {target} \u0645\u0633\u062A\u0648\u0649"
+  targetTemplate: 
+  rewardCoins: 1
+  rewardGems: 100
+  difficulty: 4
