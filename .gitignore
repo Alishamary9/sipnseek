@@ -62,3 +62,9 @@ EditorInstance.json
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+# Custom ignore for this project
+.agent/
+# Ignore implementation and task files if desired, or keep them. 
+# The user specifically mentioned not wanting to upload the agent related files.
+

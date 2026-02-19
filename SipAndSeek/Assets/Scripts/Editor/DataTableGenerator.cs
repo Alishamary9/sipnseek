@@ -19,9 +19,37 @@ namespace SipAndSeek.Editor
             GenerateHiddenImages();
             GenerateAchievements();
             GenerateDailyChallenges();
+            
+            GenerateGameDatabase(); // Auto-create the master DB
+            
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
             Debug.Log("🎉 All data generated successfully!");
+        }
+
+        private static void GenerateGameDatabase()
+        {
+            string path = "Assets/Resources/GameDatabase.asset";
+            GameDatabase db = AssetDatabase.LoadAssetAtPath<GameDatabase>(path);
+            
+            if (db == null)
+            {
+                db = ScriptableObject.CreateInstance<GameDatabase>();
+                if (!Directory.Exists("Assets/Resources")) Directory.CreateDirectory("Assets/Resources");
+                AssetDatabase.CreateAsset(db, path);
+                Debug.Log("Created new GameDatabase.asset");
+            }
+
+            // Auto-populate lists
+            db.mergeChainItems = new List<MergeChainItemData>(Resources.LoadAll<MergeChainItemData>("Data/MergeChains"));
+            db.levelRewards = new List<LevelRewardData>(Resources.LoadAll<LevelRewardData>("Data/LevelRewards"));
+            db.obstacles = new List<ObstacleData>(Resources.LoadAll<ObstacleData>("Data/Obstacles"));
+            db.powerups = new List<PowerupData>(Resources.LoadAll<PowerupData>("Data/Powerups"));
+            db.hiddenImages = new List<HiddenImageData>(Resources.LoadAll<HiddenImageData>("Data/HiddenImages"));
+            db.achievements = new List<AchievementData>(Resources.LoadAll<AchievementData>("Data/Achievements"));
+            db.dailyChallenges = new List<DailyChallengeData>(Resources.LoadAll<DailyChallengeData>("Data/DailyChallenges"));
+
+            EditorUtility.SetDirty(db);
         }
 
         private static void CreateAsset<T>(T asset, string path) where T : ScriptableObject

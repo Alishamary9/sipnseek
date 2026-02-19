@@ -15,7 +15,20 @@ namespace SipAndSeek.Managers
             {
                 if (_instance == null)
                 {
+                    // Try loading from root first
                     _instance = Resources.Load<GameDatabase>("GameDatabase");
+                    
+                    // If not found, try specific path
+                    if (_instance == null)
+                        _instance = Resources.Load<GameDatabase>("SipAndSeek/Managers/GameDatabase");
+                        
+                    // If still not found, try finding any in Resources
+                    if (_instance == null)
+                    {
+                        var all = Resources.LoadAll<GameDatabase>("");
+                        if (all != null && all.Length > 0)
+                            _instance = all[0];
+                    }
                 }
                 return _instance;
             }

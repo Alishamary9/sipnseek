@@ -1,0 +1,36 @@
+# Sip & Seek: Implementation Plan
+
+- [x] Create comprehensive implementation plan
+- [x] Implement Phase 1: Core Infrastructure (7 files)
+- [x] Implement Phase 2: Gameplay Systems (10 files)
+  - [x] `LevelConfig.cs` — Level configuration ScriptableObject
+  - [x] `GridCell.cs` — Cell with obstacle/reveal/drop support
+  - [x] `MergeItem.cs` — Draggable item with rarity colors
+  - [x] `ItemGenerator.cs` — Weighted spawn with cooldown
+  - [x] `GridManager.cs` — Grid creation and item drop handling
+  - [x] `MergeManager.cs` — Merge logic + reveal threshold
+  - [x] `RevealManager.cs` — Image slicing + reveal tracking
+  - [x] `ObstacleManager.cs` — Random obstacle placement
+  - [x] `LevelManager.cs` — Level orchestrator with GDD rewards
+  - [x] `LevelConfigGenerator.cs` — Editor tool for levels 1-3
+- [x] Fix remaining compilation issues
+  - [x] Fix Random ambiguity in GridManager
+  - [x] Fix FindObjectOfType deprecation (Unity 6)
+- [x] Create Test Scene for gameplay verification
+- [ ] Implement Phase 3: Secondary Systems
+  - [x] Integrate **NodeCanvas** for Tutorials & Dialogue
+  - [x] Create [DIALOGUE_SETUP_GUIDE.md](file:///e:/game_test/DIALOGUE_SETUP_GUIDE.md) for user testing
+  - [ ] Implement `EconomyManager.cs` (Coins, Gems)
+  - [ ] Implement `PowerupManager` with visual effects (**Fantasy Sounds Bundle**)
+  - [ ] Implement `AchievementSystem` & `DailyChallengeManager`
+  - [/] Implement `DialogueManager` & `TutorialManager`
+- [ ] Implement Phase 4: UI/UX
+  - [ ] Setup UI Framework with **GUI Pro - Fantasy RPG**
+  - [ ] Use **Odin Inspector** for data management tools
+  - [ ] Implement Main Menu & Level Select
+  - [ ] Implement In-Game HUD & Popups
+- [/] Implement Phase 5: Visual Arts & Juice
+  - [/] Generate Hidden Images for Levels 1-3 (AI Generation)
+  - [ ] Generate Item Icons for primary chains
+  - [ ] Implement Squash & Stretch for Merge items
+  - [ ] Add Steam/Flicker VFX to revealed images
