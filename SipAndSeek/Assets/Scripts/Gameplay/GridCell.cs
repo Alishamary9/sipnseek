@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using SipAndSeek;
 using SipAndSeek.Managers;
 
@@ -9,7 +8,8 @@ namespace SipAndSeek.Gameplay
     /// Represents a single cell in the game grid.
     /// Manages its visual state, item reference, and obstacle data.
     /// </summary>
-    public class GridCell : MonoBehaviour, IDropHandler
+    [RequireComponent(typeof(BoxCollider2D))]
+    public class GridCell : MonoBehaviour
     {
         [Header("Position")]
         [SerializeField] private int _row;
@@ -62,6 +62,15 @@ namespace SipAndSeek.Gameplay
             _frozenHitsRemaining = 0;
             gameObject.name = $"Cell_{row}_{col}";
 
+            // Auto-find renderers if not assigned
+            if (_backgroundRenderer == null)
+                _backgroundRenderer = GetComponent<SpriteRenderer>();
+
+            // Ensure collider exists for raycast detection
+            BoxCollider2D col2d = GetComponent<BoxCollider2D>();
+            if (col2d == null)
+                col2d = gameObject.AddComponent<BoxCollider2D>();
+
             UpdateVisuals();
         }
 
@@ -85,7 +94,7 @@ namespace SipAndSeek.Gameplay
             if (item != null)
             {
                 item.SetCell(this);
-                item.transform.position = transform.position;
+                item.MoveToPosition(transform.position);
             }
 
             UpdateVisuals();
@@ -140,13 +149,12 @@ namespace SipAndSeek.Gameplay
                     _frozenHitsRemaining--;
                     if (_frozenHitsRemaining <= 0)
                     {
-                        // Frozen → Locked → need one more merge Lv3+
                         _state = TileState.Locked;
                         UpdateVisuals();
                     }
                     else
                     {
-                        UpdateVisuals(); // Show cracking animation state
+                        UpdateVisuals();
                     }
                     return false;
 
@@ -167,7 +175,6 @@ namespace SipAndSeek.Gameplay
                     return false;
 
                 case TileState.Golden:
-                    // Golden is not an obstacle — it's a bonus. Reveals normally.
                     ClearObstacle();
                     return true;
 
@@ -211,24 +218,6 @@ namespace SipAndSeek.Gameplay
             }
 
             UpdateVisuals();
-        }
-
-        // ===============================
-        // Drop Handler (for Drag & Drop)
-        // ===============================
-        public void OnDrop(PointerEventData eventData)
-        {
-            // This will be called by MergeManager when an item is dropped on this cell
-            if (eventData.pointerDrag == null) return;
-
-            MergeItem draggedItem = eventData.pointerDrag.GetComponent<MergeItem>();
-            if (draggedItem == null) return;
-
-            // Delegate to GridManager / MergeManager for validation
-            if (GridManager.Instance != null)
-            {
-                GridManager.Instance.HandleItemDrop(draggedItem, this);
-            }
         }
 
         // ===============================
@@ -276,9 +265,15 @@ namespace SipAndSeek.Gameplay
         private void UpdateOverlay()
         {
             if (_overlayRenderer == null) return;
-
-            // Show overlay for obstacles, hide for empty/occupied/revealed
             _overlayRenderer.enabled = HasObstacle || IsGolden;
+        }
+
+        /// <summary>
+        /// Reset cell color to default (used by MergeItem highlight system).
+        /// </summary>
+        public void ResetColor()
+        {
+            UpdateBackgroundColor();
         }
 
         /// <summary>

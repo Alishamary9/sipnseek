@@ -196,7 +196,8 @@ namespace SipAndSeek.Gameplay
         public static MergeItem CreateMergeItemObject(MergeChainItemData data, Vector3 position)
         {
             GameObject obj = new GameObject($"Item_{data.chainId}_Lv{data.level}");
-            obj.transform.position = position;
+            // Move item slightly towards the camera (-Z) so it sits on top of the grid cell
+            obj.transform.position = new Vector3(position.x, position.y, -1f);
 
             // Add SpriteRenderer (required by MergeItem)
             SpriteRenderer sr = obj.AddComponent<SpriteRenderer>();

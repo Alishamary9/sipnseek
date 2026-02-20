@@ -110,6 +110,9 @@ namespace SipAndSeek.Managers
                 PlayerDataManager.Instance.AddMergeCount(1);
             }
 
+            // Save data before destroying (Destroy happens at end of frame but be safe)
+            int sellPrice = draggedItem.Data != null ? draggedItem.Data.sellPrice : 10;
+
             // Remove source items
             GridCell sourceCell = draggedItem.CurrentCell;
             if (sourceCell != null) sourceCell.RemoveItem();
@@ -137,7 +140,6 @@ namespace SipAndSeek.Managers
             else
             {
                 // Max level reached — sell for coins
-                int sellPrice = draggedItem.Data != null ? draggedItem.Data.sellPrice : 10;
                 int totalCoins = sellPrice * 2; // Bonus for reaching max level
 
                 if (PlayerDataManager.Instance != null)

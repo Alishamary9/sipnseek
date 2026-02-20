@@ -3,11 +3,11 @@ using SipAndSeek;
 using SipAndSeek.Managers;
 using SipAndSeek.Gameplay;
 using SipAndSeek.Data;
+using SipAndSeek.VFX;
+using UnityEngine.EventSystems;
 
 namespace SipAndSeek.Testing
 {
-using UnityEngine.EventSystems;
-
     /// <summary>
     /// Test Scene bootstrap — auto-creates all managers and starts Level 1.
     /// Attach this to a GameObject in the scene and press Play.
@@ -42,18 +42,28 @@ using UnityEngine.EventSystems;
             // Step 4: Auto-start level if enabled
             if (_autoStart)
             {
-                Invoke(nameof(StartTestLevel), 0.5f); // Small delay to let managers initialize
+                Invoke(nameof(StartTestLevel), 0.5f);
             }
         }
 
         private void SetupInput()
         {
+            // EventSystem is still needed for UI (Canvas) elements
             if (FindFirstObjectByType<EventSystem>() == null)
             {
                 GameObject eventSystem = new GameObject("EventSystem");
                 eventSystem.AddComponent<EventSystem>();
                 eventSystem.AddComponent<StandaloneInputModule>();
                 Debug.Log("[TestScene] 🖱️ Created EventSystem");
+            }
+
+            // Physics2DRaycaster on camera is critical for OnMouseDown to work
+            // on BoxCollider2D sprites
+            Camera cam = Camera.main;
+            if (cam != null && cam.GetComponent<Physics2DRaycaster>() == null)
+            {
+                cam.gameObject.AddComponent<Physics2DRaycaster>();
+                Debug.Log("[TestScene] 🖱️ Added Physics2DRaycaster to Main Camera");
             }
         }
 
@@ -66,13 +76,6 @@ using UnityEngine.EventSystems;
                 cam.orthographicSize = _cameraSize;
                 cam.transform.position = new Vector3(0, 0, -10);
                 cam.backgroundColor = new Color(0.95f, 0.92f, 0.88f); // Warm sand bg
-                
-                // Add Physics2DRaycaster for sprite interaction
-                if (cam.GetComponent<Physics2DRaycaster>() == null)
-                {
-                    cam.gameObject.AddComponent<Physics2DRaycaster>();
-                    Debug.Log("[TestScene] 🖱️ Added Physics2DRaycaster to Main Camera");
-                }
 
                 Debug.Log("[TestScene] 📷 Camera configured (ortho, size=" + _cameraSize + ")");
             }
@@ -80,7 +83,6 @@ using UnityEngine.EventSystems;
 
         private void CreateManagers()
         {
-            // Create a single Managers root
             GameObject managersObj = new GameObject("=== MANAGERS ===");
 
             // Core managers
@@ -99,13 +101,16 @@ using UnityEngine.EventSystems;
             // Item generator
             EnsureManager<ItemGenerator>(managersObj);
 
-            // Phase 3: Secondary systems
+            // Secondary systems
             EnsureManager<EconomyManager>(managersObj);
             EnsureManager<PowerupManager>(managersObj);
             EnsureManager<AchievementManager>(managersObj);
             EnsureManager<DailyChallengeManager>(managersObj);
             EnsureManager<NarrativeManager>(managersObj);
             EnsureManager<TutorialManager>(managersObj);
+
+            // VFX
+            EnsureManager<MergeVFXManager>(managersObj);
 
             Debug.Log("[TestScene] ✅ All managers created");
         }
@@ -129,8 +134,14 @@ using UnityEngine.EventSystems;
             }
             else
             {
-                Debug.Log($"[TestScene] 📊 GameDatabase loaded: " +
-                    $"{GameDatabase.Instance.mergeChainItems.Count} merge items");
+                GameDatabase db = GameDatabase.Instance;
+
+                // We trust the GameDatabase has been set up correctly in the Editor via AssetAutoImporter.
+                // We no longer attempt to force-load from Resources at runtime to avoid wiping new assets
+                // that aren't located in the exact 'Resources/Data' folders yet.
+
+                Debug.Log($"[TestScene] 📊 GameDatabase loaded/verified: " +
+                    $"{db.mergeChainItems.Count} merge items");
             }
         }
 
@@ -143,7 +154,6 @@ using UnityEngine.EventSystems;
                 return;
             }
 
-            // Try loading from Resources first
             string configPath = $"Data/LevelConfigs/Level_{_testLevel}";
             LevelConfig config = Resources.Load<LevelConfig>(configPath);
 
@@ -165,7 +175,6 @@ using UnityEngine.EventSystems;
         /// </summary>
         private void StartInlineTestLevel(LevelManager levelMgr)
         {
-            // Create a temporary LevelConfig
             LevelConfig testConfig = ScriptableObject.CreateInstance<LevelConfig>();
             testConfig.levelNumber = _testLevel;
             testConfig.difficulty = Difficulty.VeryEasy;
@@ -175,7 +184,7 @@ using UnityEngine.EventSystems;
             testConfig.imageGridCols = 3;
             testConfig.targetPercent = 0.8f;
             testConfig.moveLimit = -1;
-            testConfig.availableChains = new System.Collections.Generic.List<string> { "coffee", "tea" };
+            testConfig.availableChains = new System.Collections.Generic.List<string> { "coffee", "travel" };
             testConfig.lockedTiles = 0;
             testConfig.frozenTiles = 0;
             testConfig.keyLockTiles = 0;
@@ -186,7 +195,7 @@ using UnityEngine.EventSystems;
         }
 
         // ===============================
-        // Manual Controls (call from Inspector or code)
+        // Manual Controls
         // ===============================
 
         [ContextMenu("Start Level")]
@@ -228,48 +237,82 @@ using UnityEngine.EventSystems;
             }
         }
 
+        // ===============================
+        // Debug HUD (OnGUI)
+        // ===============================
         private void OnGUI()
         {
-            // Simple on-screen debug HUD
             GUIStyle style = new GUIStyle(GUI.skin.label);
             style.fontSize = 16;
             style.normal.textColor = Color.white;
 
+            GUIStyle shadowStyle = new GUIStyle(style);
+            shadowStyle.normal.textColor = new Color(0, 0, 0, 0.6f);
+
             float y = 10;
-            GUI.Label(new Rect(10, y, 400, 25), $"=== Sip & Seek Test Scene ===", style);
+
+            // Shadow + text for readability
+            DrawLabel(10, y, "=== Sip & Seek Test Scene ===", style, shadowStyle);
             y += 25;
 
             if (GameManager.Instance != null)
-                GUI.Label(new Rect(10, y, 400, 25), $"State: {GameManager.Instance.CurrentState}", style);
-            y += 22;
+            {
+                DrawLabel(10, y, $"State: {GameManager.Instance.CurrentState}", style, shadowStyle);
+                y += 22;
+            }
 
             if (PlayerDataManager.Instance != null)
-                GUI.Label(new Rect(10, y, 400, 25),
-                    $"Coins: {PlayerDataManager.Instance.Coins}  |  Gems: {PlayerDataManager.Instance.Gems}", style);
-            y += 22;
+            {
+                DrawLabel(10, y,
+                    $"🪙 {PlayerDataManager.Instance.Coins}  |  💎 {PlayerDataManager.Instance.Gems}",
+                    style, shadowStyle);
+                y += 22;
+            }
 
             if (MergeManager.Instance != null)
-                GUI.Label(new Rect(10, y, 400, 25),
-                    $"Merges: {MergeManager.Instance.TotalMergesThisLevel}  |  Next Reveal in: {MergeManager.Instance.MergesUntilReveal}", style);
-            y += 22;
+            {
+                DrawLabel(10, y,
+                    $"Merges: {MergeManager.Instance.TotalMergesThisLevel}  |  Next Reveal: {MergeManager.Instance.MergesUntilReveal}",
+                    style, shadowStyle);
+                y += 22;
+            }
 
             if (RevealManager.Instance != null)
-                GUI.Label(new Rect(10, y, 400, 25),
-                    $"Revealed: {RevealManager.Instance.RevealedCount}/{RevealManager.Instance.TotalImageTiles} ({RevealManager.Instance.RevealProgress * 100:F0}%)", style);
-            y += 22;
+            {
+                DrawLabel(10, y,
+                    $"Revealed: {RevealManager.Instance.RevealedCount}/{RevealManager.Instance.TotalImageTiles} ({RevealManager.Instance.RevealProgress * 100:F0}%)",
+                    style, shadowStyle);
+                y += 22;
+            }
 
             if (ObstacleManager.Instance != null)
-                GUI.Label(new Rect(10, y, 400, 25),
-                    $"Obstacles: {ObstacleManager.Instance.ClearedObstacles}/{ObstacleManager.Instance.TotalObstacles}", style);
-            y += 30;
+            {
+                DrawLabel(10, y,
+                    $"Obstacles: {ObstacleManager.Instance.ClearedObstacles}/{ObstacleManager.Instance.TotalObstacles}",
+                    style, shadowStyle);
+                y += 30;
+            }
+            else
+            {
+                y += 30;
+            }
 
             // Buttons
-            if (GUI.Button(new Rect(10, y, 150, 30), "Spawn Item"))
+            GUIStyle btnStyle = new GUIStyle(GUI.skin.button);
+            btnStyle.fontSize = 14;
+
+            if (GUI.Button(new Rect(10, y, 150, 35), "🎲 Spawn Item", btnStyle))
                 SpawnRandomItem();
-            if (GUI.Button(new Rect(170, y, 150, 30), "Reveal Tile"))
+            if (GUI.Button(new Rect(170, y, 150, 35), "🔍 Reveal Tile", btnStyle))
                 RevealNextTile();
-            if (GUI.Button(new Rect(330, y, 150, 30), "+100 Coins"))
+            if (GUI.Button(new Rect(330, y, 150, 35), "🪙 +100 Coins", btnStyle))
                 AddTestCoins();
+        }
+
+        private void DrawLabel(float x, float y, string text, GUIStyle style, GUIStyle shadowStyle)
+        {
+            GUI.Label(new Rect(x + 1, y + 1, 500, 25), text, shadowStyle);
+            GUI.Label(new Rect(x, y, 500, 25), text, style);
         }
     }
 }
