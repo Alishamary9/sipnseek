@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa49f2911a01ce42b37e7c99a0f4674, type: 3}
+  m_Name: Hidden_1
+  m_EditorClassIdentifier: Assembly-CSharp::SipAndSeek.Data.HiddenImageData
+  imageId: 
+  level: 0
+  backgroundSprite: {fileID: 0}
+  nameEN: 
+  nameAR: 
+  theme: 
+  artistPrompt: 
+  gridSize: 3x3
+  difficulty: 0
+  rewardId: 

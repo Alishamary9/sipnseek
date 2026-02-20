@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff72f46bd0629cb4da1695abeedd8dcb, type: 3}
+  m_Name: GameDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::SipAndSeek.Managers.GameDatabase
+  mergeChainItems:
+  - {fileID: 11400000, guid: 8a587784f2a80614fa8a710221643c21, type: 2}
+  - {fileID: 11400000, guid: a6418681e18b97a44b438fa9bf0922eb, type: 2}
+  - {fileID: 11400000, guid: 99a1292f9a85ae14c884028e624c6f65, type: 2}
+  - {fileID: 11400000, guid: 1a00af2e5976dd14c97f482ab110f6a0, type: 2}
+  - {fileID: 11400000, guid: 29e44e8fbeca3b140aa5d9100afc29b2, type: 2}
+  - {fileID: 11400000, guid: eee04bbf74e44a74996a7729de285245, type: 2}
+  - {fileID: 11400000, guid: 585f2dbc1739ee849b37298d800b92e7, type: 2}
+  - {fileID: 11400000, guid: d42f0134625c30647ae683ca5a486713, type: 2}
+  - {fileID: 11400000, guid: 095d3a143592a4b438257a376a7a354a, type: 2}
+  - {fileID: 11400000, guid: 7fc4cd3945e6e774a97afcec75f67e43, type: 2}
+  - {fileID: 11400000, guid: dfba847ef24844f4c9803af73b52bf91, type: 2}
+  - {fileID: 11400000, guid: 437a5f38eff0465489ed6b6a619c63c8, type: 2}
+  - {fileID: 11400000, guid: 04a75748f0c2dee468a57322a4795f0d, type: 2}
+  - {fileID: 11400000, guid: e8a8dde4fa73d734e8b0b3707f4dad39, type: 2}
+  - {fileID: 11400000, guid: 2d77b3b8297485040b023687c716bc22, type: 2}
+  - {fileID: 11400000, guid: 1cd1fb604291625489081dedb74d377b, type: 2}
+  hiddenImages:
+  - {fileID: 11400000, guid: ad89e6842cb1ad341b9e74093584a1f3, type: 2}
+  - {fileID: 11400000, guid: 658ed29693a4df7418a9153358cc6101, type: 2}
+  - {fileID: 11400000, guid: 76cc58a4a0bc5074cb3ecad1d9412576, type: 2}
+  - {fileID: 11400000, guid: bdaef64d4ab4205438fec89628ab0b2f, type: 2}
+  levelRewards: []
+  achievements: []
+  dailyChallenges: []
+  obstacles: []
+  powerups: []

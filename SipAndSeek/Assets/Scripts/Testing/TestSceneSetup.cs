@@ -99,6 +99,14 @@ using UnityEngine.EventSystems;
             // Item generator
             EnsureManager<ItemGenerator>(managersObj);
 
+            // Phase 3: Secondary systems
+            EnsureManager<EconomyManager>(managersObj);
+            EnsureManager<PowerupManager>(managersObj);
+            EnsureManager<AchievementManager>(managersObj);
+            EnsureManager<DailyChallengeManager>(managersObj);
+            EnsureManager<NarrativeManager>(managersObj);
+            EnsureManager<TutorialManager>(managersObj);
+
             Debug.Log("[TestScene] ✅ All managers created");
         }
 

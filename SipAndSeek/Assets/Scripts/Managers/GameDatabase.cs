@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using SipAndSeek.Data;
 using System.Linq;
+using Sirenix.OdinInspector;
 
 namespace SipAndSeek.Managers
 {
@@ -15,14 +16,8 @@ namespace SipAndSeek.Managers
             {
                 if (_instance == null)
                 {
-                    // Try loading from root first
                     _instance = Resources.Load<GameDatabase>("GameDatabase");
                     
-                    // If not found, try specific path
-                    if (_instance == null)
-                        _instance = Resources.Load<GameDatabase>("SipAndSeek/Managers/GameDatabase");
-                        
-                    // If still not found, try finding any in Resources
                     if (_instance == null)
                     {
                         var all = Resources.LoadAll<GameDatabase>("");
@@ -34,14 +29,22 @@ namespace SipAndSeek.Managers
             }
         }
 
-        [Header("Data Tables")]
+        [TabGroup("Core Gameplay")]
+        [Searchable, ListDrawerSettings(ShowIndexLabels = true)]
         public List<MergeChainItemData> mergeChainItems = new List<MergeChainItemData>();
-        public List<LevelRewardData> levelRewards = new List<LevelRewardData>();
-        public List<ObstacleData> obstacles = new List<ObstacleData>();
-        public List<PowerupData> powerups = new List<PowerupData>();
+
+        [TabGroup("Levels & Hidden")]
+        [Searchable]
         public List<HiddenImageData> hiddenImages = new List<HiddenImageData>();
+
+        [TabGroup("Rewards & Meta")]
+        public List<LevelRewardData> levelRewards = new List<LevelRewardData>();
         public List<AchievementData> achievements = new List<AchievementData>();
         public List<DailyChallengeData> dailyChallenges = new List<DailyChallengeData>();
+
+        [TabGroup("Settings")]
+        public List<ObstacleData> obstacles = new List<ObstacleData>();
+        public List<PowerupData> powerups = new List<PowerupData>();
 
         // Helper methods for easy lookup
         public MergeChainItemData GetMergeItem(string chainId, int level)
@@ -57,6 +60,21 @@ namespace SipAndSeek.Managers
         public ObstacleData GetObstacle(string id)
         {
             return obstacles.FirstOrDefault(o => o.obstacleId == id);
+        }
+
+        public AchievementData GetAchievement(string achId)
+        {
+            return achievements.FirstOrDefault(a => a.achId == achId);
+        }
+
+        public PowerupData GetPowerup(string powerupId)
+        {
+            return powerups.FirstOrDefault(p => p.powerupId == powerupId);
+        }
+
+        public DailyChallengeData GetDailyChallenge(string challengeId)
+        {
+            return dailyChallenges.FirstOrDefault(dc => dc.challengeId == challengeId);
         }
     }
 }
